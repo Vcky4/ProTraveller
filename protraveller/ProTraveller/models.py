@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group, Permission
+from django.contrib.auth import get_user_model
 from django.core import validators
 from django.db import models
 
@@ -61,3 +62,31 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+class Article(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='authored_articles')
+    images = models.ImageField(upload_to='article_images/', blank=True, null=True)
+    cleanliness_rating = models.PositiveIntegerField(default=1, choices=[(i, i) for i in range(1, 6)])
+    affordability_rating = models.PositiveIntegerField(default=1, choices=[(i, i) for i in range(1, 6)])
+    service_rating = models.PositiveIntegerField(default=1, choices=[(i, i) for i in range(1, 6)])
+
+    def __str__(self):
+        return self.title
+
+class Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
+    bio = models.TextField(blank=True)
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+        ('O', 'Other'),
+    ]
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
+    points = models.IntegerField(default=0)
+    saved = models.ManyToManyField('Article', related_name='saved_by', blank=True)
+
+    def __str__(self):
+        return self.user.username
