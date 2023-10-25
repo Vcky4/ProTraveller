@@ -1,0 +1,20 @@
+# Ignore the virtual environment directory
+pro_traveller_env/
+
+# Ignore database files
+db.sqlite3
+
+# Ignore system files
+__pycache__/
+
+# Ignore settings files
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local development settings
+local_settings.py
+
+# Ignore IDE-specific files and directories
+.vscode/
+.idea/
