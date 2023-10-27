@@ -34,3 +34,41 @@ code {
   min-width: 300px;
   min-height: 310px;
 }
+
+/* COLOR  */
+
+.choc-brown {
+  color: #f58d54;
+}
+
+.cream {
+  color: #FFF5DC;
+}
+
+.bg-cream {
+  background-color: #FFF5DC;
+}
+
+.border-color {
+  border-color: #f58d54;
+}
+
+.input-error {
+  border-color: #e94e4e;
+}
+
+.error {
+  color: #e94e4e;
+}
+
+.checkbox {
+  accent-color: #f58d54;
+}
+
+.border-cream {
+  border-color: #FFF5DC;
+}
+
+.button-background {
+  background-color: #f58d54;
+}
