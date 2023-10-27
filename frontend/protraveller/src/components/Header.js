@@ -50,7 +50,7 @@ export const Header = () => {
                         </ul>
                     </div>
 
-                    <div className='flex flex-col items-center justify-center gap-4 text-sm'>
+                    <div className='flex flex-col  justify-center gap-4 text-sm'>
                         <button className='border px-2 md:px-8 py-1 rounded choc-brown border-color'><Link to="/#enquiries" smooth onClick={toggleNavbar}>Login</Link></button>
                         <button className='button-background text-white px-2 py-1 rounded w-full'><Link to="/#waitlist" smooth onClick={toggleNavbar}>Get Started</Link></button>
                     </div>
