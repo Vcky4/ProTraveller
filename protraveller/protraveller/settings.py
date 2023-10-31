@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rlfh+qb@v4fqs@_di#5wtrqwkq_v4-zlzi62uv)g*&5i^$sxjs'
+SECRET_KEY = 'django-insecure-k+^9me#zcn*6i6dp_u0p#@bpelpetn1*t#fs!z+89g_ygx4$$='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'ProTraveller',
+    'protraveller_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,7 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'protraveller.wsgi.application'
 
-
+AUTH_USER_MODEL = 'protraveller_app.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 

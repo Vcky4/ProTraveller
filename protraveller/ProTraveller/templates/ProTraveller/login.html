@@ -1,8 +1,0 @@
-<form method="post" action="{% url 'ProTraveller:login' %}">
-    {% csrf_token %}
-    {{ form.username.label_tag }}
-    {{ form.username }}
-    {{ form.password.label_tag }}
-    {{ form.password }}
-    <input type="submit" value="Log In">
-</form>
