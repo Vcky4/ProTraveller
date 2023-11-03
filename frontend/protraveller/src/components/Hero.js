@@ -2,16 +2,16 @@ import React from 'react'
 import hero from '../images/hero.jpg'
 import rrr from '../images/rrr.png'
 import { HashLink as Link } from 'react-router-hash-link'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 export const Hero = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
 
-  const toggleImage = () => {
-    setIsOpen(!isOpen)
-  }
+  // const toggleImage = () => {
+  //   setIsOpen(!isOpen)
+  // }
 
   useEffect(() => {
     AOS.init({ duration: 3000 })
