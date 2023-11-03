@@ -33,7 +33,7 @@ export const Header = () => {
 
                     <div className='flex items-center justify-center gap-4 text-sm'>
                         <button className='border px-8 py-1 rounded choc-brown border-color'><Link to="/login" smooth>Login</Link></button>
-                        <button className='button-background text-white px-10 py-1 rounded'><Link to="/#waitlist" smooth>Get Started</Link></button>
+                        <button className='button-background text-white px-10 py-1 rounded'><Link to="/signup" smooth>Get Started</Link></button>
                     </div>
                 </div>
                 <div className='xl:hidden absolute top-7 right-8 md:right-16'>
@@ -51,8 +51,8 @@ export const Header = () => {
                     </div>
 
                     <div className='flex flex-col  justify-center gap-4 text-sm'>
-                        <button className='border px-2 md:px-8 py-1 rounded choc-brown border-color'><Link to="/#enquiries" smooth onClick={toggleNavbar}>Login</Link></button>
-                        <button className='button-background text-white px-2 py-1 rounded w-full'><Link to="/#waitlist" smooth onClick={toggleNavbar}>Get Started</Link></button>
+                        <button className='border px-2 md:px-8 py-1 rounded choc-brown border-color'><Link to="/login" smooth onClick={toggleNavbar}>Login</Link></button>
+                        <button className='button-background text-white px-2 py-1 rounded w-full'><Link to="/signup" smooth onClick={toggleNavbar}>Get Started</Link></button>
                     </div>
                 </div>
             }
