@@ -32,7 +32,7 @@ export const Header = () => {
                     </div>
 
                     <div className='flex items-center justify-center gap-4 text-sm'>
-                        <button className='border px-8 py-1 rounded choc-brown border-color'><Link to="/#enquiries" smooth>Login</Link></button>
+                        <button className='border px-8 py-1 rounded choc-brown border-color'><Link to="/login" smooth>Login</Link></button>
                         <button className='button-background text-white px-10 py-1 rounded'><Link to="/#waitlist" smooth>Get Started</Link></button>
                     </div>
                 </div>
