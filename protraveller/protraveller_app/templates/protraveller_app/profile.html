@@ -1,16 +1,20 @@
 {% extends "protraveller_app/layout.html" %}
 
 {% block body %}
-
+{% for i in profile %}
 <div>
     <img src="{{ profile.profile_picture.url }}" alt="{{ profile.user.username }}'s Profile Picture">
 </div>
 
-<h2>{{ profile.user.username }}</h2>
+<h2>{{ i.username }}</h2>
 
-<p>{{ profile.bio }}</p>
-
-<a href="{% url 'edit_profile' username=profile.user.username %}">Edit Profile</a>
-
+<p>Bio: {{ i.bio }}</p>
+{% endfor %}
+<a href="{% url 'edit_profile' %}">Edit Profile</a>
+<h2>Articles Authored by {{ user.username }}</h2>
+{% for article in articles %}
+    <h3>{{ article.title }}</h3>
+    <p>{{ article.post }}</p>
+{% endfor %}
 
 {% endblock %}

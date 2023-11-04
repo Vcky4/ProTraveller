@@ -1,6 +1,30 @@
 {% extends "protraveller_app/layout.html" %}
 
 {% block body %}
-   
-    <h1>Hello, World!</h1>
+<form method="post" action= "{% url 'create_article' %}"enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Article</button>
+</form>
+<br>
+<div class="article-list">
+    {% for article in articles %}
+      <div class="article">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.post }}</p>
+        <p>Author: {{ article.author.username }}</p>
+        <p>Published on: {{ article.publication_date }}</p>
+        
+        <!-- Add more fields like ratings, images, etc., as needed -->
+        <p>Cleanliness Rating: {{ article.cleanliness_rating }}</p>
+        <p>Service Rating: {{ article.service_rating }}</p>
+        <p>Affordability Rating: {{ article.affordability_rating }}</p>
+
+        <img src="{{ article.images.url }}" alt="Article Image" width="200">
+        <!-- Display article images if available -->
+      </div>
+    {% empty %}
+      <p>No articles available.</p>
+    {% endfor %}
+  </div>
 {% endblock %}

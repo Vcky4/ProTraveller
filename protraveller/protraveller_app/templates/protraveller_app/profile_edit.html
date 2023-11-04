@@ -1,0 +1,15 @@
+{% extends "protraveller_app/layout.html" %}
+
+{% block body %}
+
+<form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data" style="margin: 0 auto; 
+width:250px;">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Save"/>
+</form>
+
+
+
+
+{% endblock %}

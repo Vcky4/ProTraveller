@@ -2,7 +2,7 @@ from django.shortcuts import render,get_object_or_404
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Profile
+from .models import CustomUser, Profile, Article
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import *
@@ -10,8 +10,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-
-    return render(request, "protraveller_app/index.html")
+    articles = Article.objects.all().order_by('-publication_date')
+    return render(request, 'protraveller_app/index.html', {'articles': articles})
 
 
 
@@ -45,26 +45,39 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 @login_required
-def profile(request, username):
-    try:
-        user = get_object_or_404(CustomUser, username=username)
-        profile = get_object_or_404(Profile, user=user)
-    except      CustomUser.DoesNotExist:
-        pass
-    except Profile.DoesNotExist:
-        pass
-    return render(request, 'profile.html', {'profile': profile})
+def profile(request):
+    profile= Profile.objects.filter(user=request.user).all()
+    articles = Article.objects.filter(author=request.user).order_by('-publication_date')
 
-def edit_profile(request, username):
-    profile = Profile.objects.get(user__username=username)
+    return render(request, 'protraveller_app/profile.html', {'profile': profile, 'articles': articles})
 
+def edit_profile(request):
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('display_profile', username=username)
-
+            post= form.save(commit=False)
+            post.user=request.user 
+            post.save()
+            return redirect('profile')
     else:
-        form = ProfileForm(instance=profile)
+        form = ProfileForm()
 
-    return render(request, 'profile_edit.html', {'form': form})
+    return render(request, 'protraveller_app/profile_edit.html', {'form': form})
+
+def article_list(request):
+    articles = Article.objects.all()
+    return render(request, 'articles/article_list.html', {'articles': articles})
+
+@login_required
+def create_article(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.author = request.user
+            article.save()
+            return redirect('index')
+    else:
+        form = ArticleForm()
+
+    return render(request, 'protraveller_app/index.html', {'form': form})

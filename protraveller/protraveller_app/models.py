@@ -15,15 +15,16 @@ class Profile(models.Model):
         return self.user.username
     
 class Article(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default='anonymous')
     post = models.TextField()
     images = models.ImageField(upload_to='article_images/')
+    publication_date = models.DateTimeField(auto_now_add=True)
     cleanliness_rating = models.PositiveIntegerField(default=0)
     service_rating = models.PositiveIntegerField(default=0)
     affordability_rating = models.PositiveIntegerField(default=0)
     
     def __str__(self):
-        return f"Article by {self.user.username}"
+        return f"Article by {self.author.username}"
     
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
