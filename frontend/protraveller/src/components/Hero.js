@@ -2,16 +2,16 @@ import React from 'react'
 import hero from '../images/hero.jpg'
 import rrr from '../images/rrr.png'
 import { HashLink as Link } from 'react-router-hash-link'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 export const Hero = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
 
-  const toggleImage = () => {
-    setIsOpen(!isOpen)
-  }
+  // const toggleImage = () => {
+  //   setIsOpen(!isOpen)
+  // }
 
   useEffect(() => {
     AOS.init({ duration: 3000 })
@@ -27,7 +27,7 @@ export const Hero = () => {
           <h3 className='text-xl 2xl:text-2xl cream text-center playfair mt-16'>
             Discover Your Journey, Live the Adventure - Protraveller
           </h3>
-          <button className='rounded-full border px-20 font-semibold py-4 mt-24 mb-40 cream'><Link to="#waitlist" smooth>Get Started</Link></button> 
+          <button className='rounded-full border px-20 font-semibold py-4 mt-24 mb-40 cream'><Link to="/signup" smooth>Get Started</Link></button> 
         </div>
       </div>
     </section>
