@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-k+^9me#zcn*6i6dp_u0p#@bpelpetn1*t#fs!z+89g_ygx4$$=
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'protraveller_app.User'
 
 
 # Application definition

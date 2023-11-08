@@ -2,7 +2,7 @@ from django.shortcuts import render,get_object_or_404
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Profile, Article
+from .models import User, Profile, Article
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import *
