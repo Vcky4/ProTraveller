@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import home from '../images/home.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png'
 
 
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
         // Handle the login logic here, e.g., sending a request to your server
+        navigate('/home'); // Navigate to the home page
 
         // For this example, we'll just log the email and password
         console.log('Email:', email);
