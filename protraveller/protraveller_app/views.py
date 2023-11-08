@@ -7,7 +7,10 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import *
 from django.contrib.auth.decorators import login_required
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import ProfileSerializer, EditProfileSerializer, ArticleSerializer
+from rest_framework import status
 
 def index(request):
     articles = Article.objects.all().order_by('-publication_date')
@@ -45,31 +48,45 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 @login_required
+@api_view(['GET'])
 def profile(request):
-    profile= Profile.objects.filter(user=request.user).all()
+    profile = Profile.objects.filter(user=request.user).first()
     articles = Article.objects.filter(author=request.user).order_by('-publication_date')
 
-    return render(request, 'protraveller_app/profile.html', {'profile': profile, 'articles': articles})
-
+    if profile:
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+    else:
+        return Response({'message': 'Profile not found'}, status=404)
+    
+@login_required
+@api_view(['POST'])
 def edit_profile(request):
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            post= form.save(commit=False)
-            post.user=request.user 
-            post.save()
-            return redirect('profile')
+        # Update the profile using the serializer
+        profile = Profile.objects.filter(user=request.user).first()
+        serializer = EditProfileSerializer(profile, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # Handle HTML rendering for editing the profile
     else:
         form = ProfileForm()
 
+    # Return an HTML response
     return render(request, 'protraveller_app/profile_edit.html', {'form': form})
 
-def article_list(request):
-    articles = Article.objects.all()
-    return render(request, 'articles/article_list.html', {'articles': articles})
 
 @login_required
-def create_article(request):
+@api_view(['GET', 'POST'])
+def article_list(request):
+    if request.method == 'GET':
+        articles = Article.objects.all()
+        serializer = ArticleSerializer(articles, many=True)
+        return Response(serializer.data)
+
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
@@ -77,7 +94,12 @@ def create_article(request):
             article.author = request.user
             article.save()
             return redirect('index')
-    else:
-        form = ArticleForm()
+        else:
+            serializer = ArticleSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save(author=request.user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    form = ArticleForm()
     return render(request, 'protraveller_app/index.html', {'form': form})

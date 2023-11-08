@@ -8,5 +8,16 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('profile/', views.profile, name='profile'),
     path('editprofile/', views.edit_profile, name='edit_profile'),
-    path('create_article/',views.create_article, name='create_article')
+    path('articles/', views.article_list, name='article_list'),
+
+    
+    # REST-API Views
+    path('api/signup/', views.SignupView.as_view(), name='signup-api'),
+    path('api/login/', views.LoginView.as_view(), name='login-api'),
+    path('api/logout/', views.LogoutView.as_view(), name='logout-api'),
+    path('api/profile/', views.profile, name='profile-api'),
+    path('api/edit_profile/', views.edit_profile, name='edit-profile-api')
+
+    
+    
 ]

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'protraveller_app',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'protraveller.wsgi.application'
 
-AUTH_USER_MODEL = 'protraveller_app.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
