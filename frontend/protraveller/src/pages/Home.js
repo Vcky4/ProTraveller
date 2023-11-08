@@ -6,6 +6,8 @@ const Home = () => {
   const [posts, setPosts] = useState([
     { id: 1, location: 'Paris', content: 'Beautiful Eiffel Tower', reactions: 42 },
     { id: 2, location: 'New York', content: 'City that never sleeps', reactions: 58 },
+    { id: 3, location: 'London', content: 'Big Ben', reactions: 105 },
+    { id: 4, location: 'Paris', content: 'The Louvre', reactions: 72 },
     // Add more posts
   ]);
 
