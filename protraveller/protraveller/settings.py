@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'protraveller_app',
     'rest_framework',
+    'corsheaders',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +45,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -122,3 +126,36 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Allow all domains to access the API
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Optional: Whitelist specific origins (e.g., your React app's URL)
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # Add your React app's URL here
+# ]
+
+# Optional: Allow specific HTTP methods
+# CORS_ALLOW_METHODS = [
+#     "GET",
+#     "POST",
+#     "PUT",
+#     "PATCH",
+#     "DELETE",
+#     "OPTIONS",
+# ]
+
+# Optional: Allow specific headers in requests
+# CORS_ALLOW_HEADERS = [
+#     "Authorization",
+#     "Content-Type",
+# ]
+
+# Optional: Enable cookies in CORS requests (use with caution)
+# CORS_ALLOW_CREDENTIALS = True
+
+# Optional: Set CORS Expose Headers
+# CORS_EXPOSE_HEADERS = ["Content-Type", "Link"]
+
+# Optional: Maximum age for preflight requests
+# CORS_PREFLIGHT_MAX_AGE = 86400
