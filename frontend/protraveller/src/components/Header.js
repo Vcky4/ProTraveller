@@ -45,7 +45,7 @@ export const Header = () => {
                         <div>
                             <ul className='flex items-center justify-center choc-brown gap-4'>
                                 <li><Link to="/#about" smooth>About Us</Link></li>
-                                <li><Link to="/#FAQ" smooth>FAQs</Link></li>
+                                {/* <li><Link to="/#FAQ" smooth>FAQs</Link></li> */}
                             </ul>
                         </div>
 
@@ -65,7 +65,7 @@ export const Header = () => {
                     <div>
                         <ul className='flex flex-col choc-brown gap-4 mt-5'>
                             <li><Link to="/#about" onClick={toggleNavbar} smooth>About Us</Link></li>
-                            <li><Link to="/#FAQ" onClick={toggleNavbar} smooth>FAQs</Link></li>
+                            {/* <li><Link to="/#FAQ" onClick={toggleNavbar} smooth>FAQs</Link></li> */}
                         </ul>
                     </div>
 
