@@ -1,10 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ext from "../images/ept.png"
 import confident from "../images/confident.png"
 import adventure from "../images/adventure.png"
 import respect from "../images/respect.png"
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export const Features = () => {
+    useEffect(() => {
+        AOS.init({ duration: 3000 })
+    }, [])
     return (
         <section className="flex background justify-center relative lg:h-80 md:h-screen h-screen">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 absolute -top-10">
