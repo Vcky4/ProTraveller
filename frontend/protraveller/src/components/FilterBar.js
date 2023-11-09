@@ -5,7 +5,7 @@ const FilterBar = ({ locationFilter, setLocationFilter }) => {
 
     return (
         <div className="mb-4">
-            <label className="text-lg font-semibold">Filter by Location:</label>
+            <label className="text-lg font-semibold mr-2">Filter by Location:</label>
             <select
                 className="p-2 border rounded-md"
                 value={locationFilter}
