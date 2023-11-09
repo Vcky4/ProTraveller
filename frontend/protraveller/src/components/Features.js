@@ -6,7 +6,7 @@ import respect from "../images/respect.png"
 
 export const Features = () => {
     return (
-        <div className="flex background justify-center relative lg:h-80 md:h-screen h-screen">
+        <section className="flex background justify-center relative lg:h-80 md:h-screen h-screen">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 absolute -top-10">
                 <div className="flex flex-col items-center gap-4 px-8 py-8 background border border-color border-4 rounded-2xl">
                     <img src={ext} alt="" className="w-18 h-16" style={{ filter: 'brightness(0) invert(1)' }} />
@@ -29,6 +29,6 @@ export const Features = () => {
                     <p className="text-center text-white playfair">​​Learn to engage<br />respectfully with different<br /> cultures.</p>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
