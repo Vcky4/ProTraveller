@@ -1,3 +1,4 @@
+import { About } from '../components/About'
 import { Contact } from '../components/Contact'
 import { Features } from '../components/Features'
 import { Header } from '../components/Header'
@@ -10,6 +11,7 @@ export const LandingPage = () => {
             <Header />
             <Hero />
             <Features />
+            <About />
             <Contact />
         </>
     )
