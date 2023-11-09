@@ -21,7 +21,6 @@ const Home = () => {
     { id: 12, location: 'Paris', content: 'The Louvre', reactions: 72, cleanliness: 4, affordability: 3, service: 5 },
     { id: 13, location: 'Tokyo', content: 'Beautiful cherry blossoms', reactions: 35, cleanliness: 4, affordability: 3, service: 5 },
     { id: 14, location: 'Sydney', content: 'Iconic Opera House', reactions: 62, cleanliness: 5, affordability: 2, service: 4 },
-
   ]);
 
   const [locationFilter, setLocationFilter] = useState('All');

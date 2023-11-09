@@ -20,7 +20,7 @@ const Post = ({ post }) => {
       <h3 className="text-lg font-semibold mb-2">{post.location}</h3>
       <img
         src={post?.image || `https://source.unsplash.com/500x300/?${post.location}`}
-        alt={`Image for ${post.location}`}
+        alt={`${post.location}`}
         className="mb-4 rounded-md"
       />
       <p className="text-gray-700">{post.content}</p>
