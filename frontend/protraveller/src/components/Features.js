@@ -11,8 +11,8 @@ export const Features = () => {
         AOS.init({ duration: 3000 })
     }, [])
     return (
-        <section className="flex background justify-center relative lg:h-80 md:h-screen h-screen">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 absolute -top-10">
+        <section className="flex background justify-center ">
+            <div className="grid grid-cols-2 md:px-40 px-10  md:grid-cols-2 lg:grid-cols-4 gap-4 -top-10 -translate-y-12">
                 <div className="flex flex-col items-center gap-4 px-8 py-8 background border border-color border-4 rounded-2xl">
                     <img src={ext} alt="" className="w-18 h-16" style={{ filter: 'brightness(0) invert(1)' }} />
                     <h2 className="text-2xl font-semibold text-center text-white playfair">Local <br /> Expertise</h2>
