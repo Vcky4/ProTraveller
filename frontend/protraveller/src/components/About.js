@@ -45,9 +45,9 @@ export const About = () => {
                     <p className="text-justify text-lg playfair">
                         <strong>Mitchell Watera</strong> Backend Developer
                         <ul className="list-disc ml-8">
-                            <li><a className="choc-brown" href="https://www.linkedin.com/in/mitchellshera/">LinkedIn</a></li>
+                            <li><a className="choc-brown" href="https://www.linkedin.com/in/mitchell-maina-b5b834170/">LinkedIn</a></li>
                             <li><a className="choc-brown" href="https://github.com/mitchellshera">GitHub</a></li>
-                            <li><a className="choc-brown" href="https://twitter.com/mitchellshera">Twitter</a></li>
+                            <li><a className="choc-brown" href="https://twitter.com//MitchellWachera">Twitter</a></li>
                         </ul>
                         <strong>Victor Ubong Okon</strong> Frontend Developer
                         <ul className="list-disc ml-8">
