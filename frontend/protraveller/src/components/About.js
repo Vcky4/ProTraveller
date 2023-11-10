@@ -7,7 +7,7 @@ export const About = () => {
         AOS.init({ duration: 3000 })
     }, [])
     return (
-        <section className="background pt-10 pb-20 md:px-40 px-10 justify-center items-center flex">
+        <section id="about" className="background pt-10 pb-20 md:px-40 px-10 justify-center items-center flex">
             <div>
                 <h1 className='font-bold cream text-6xl playfair text-start'>About Us</h1>
                 <div className="bg-cream self-center p-8 rounded-lg mt-4 max-w-6xl">
