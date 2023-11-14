@@ -11,12 +11,14 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import ProfileSerializer, EditProfileSerializer, ArticleSerializer
 from rest_framework import status
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     articles = Article.objects.all().order_by('-publication_date')
     return render(request, 'protraveller_app/index.html', {'articles': articles})
 
 
+@csrf_exempt
 
 def signup(request):
     if request.method == 'POST':
@@ -32,6 +34,7 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'protraveller_app/signup.html', {'form': form})
+@csrf_exempt
 
 def login_view(request):
     if request.method == 'POST':
@@ -42,6 +45,7 @@ def login_view(request):
             login(request, user)
             return redirect('index')
     return render(request, 'protraveller_app/login.html')
+@csrf_exempt
 
 def logout_view(request):
     logout(request)
@@ -63,7 +67,6 @@ def profile(request):
 @api_view(['POST'])
 def edit_profile(request):
     if request.method == 'POST':
-        # Update the profile using the serializer
         profile = Profile.objects.filter(user=request.user).first()
         serializer = EditProfileSerializer(profile, data=request.data)
         if serializer.is_valid():
@@ -75,7 +78,6 @@ def edit_profile(request):
     else:
         form = ProfileForm()
 
-    # Return an HTML response
     return render(request, 'protraveller_app/profile_edit.html', {'form': form})
 
 
