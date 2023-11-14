@@ -1,7 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 from .models import User, Profile, Article
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -22,7 +21,7 @@ def index(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -32,7 +31,7 @@ def signup(request):
                 login(request, user)
                 return redirect('index')
     else:
-        form = UserCreationForm()
+        form = CustomUserForm()
     return render(request, 'protraveller_app/signup.html', {'form': form})
 @csrf_exempt
 
