@@ -4,11 +4,15 @@ from rest_framework import status
 from django.contrib.auth import login, logout, authenticate
 from rest_framework import serializers
 from .models import *
-class UserSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    username = serializers.CharField(max_length=30)
-    phone_number = serializers.CharField(max_length=15, allow_blank=True)
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
 
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user
 class SignupView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)

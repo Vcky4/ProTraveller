@@ -8,7 +8,7 @@ from .forms import *
 from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import ProfileSerializer, EditProfileSerializer, ArticleSerializer
+from .serializers import ProfileSerializer, EditProfileSerializer, ArticleSerializer, UserSerializer
 from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 
@@ -17,33 +17,39 @@ def index(request):
     return render(request, 'protraveller_app/index.html', {'articles': articles})
 
 
+@api_view(['GET', 'POST'])
 @csrf_exempt
-
-def signup(request):
+def signup_view(request):
     if request.method == 'POST':
-        form = CustomUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('index')
-    else:
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            login(request, user)
+            return Response({'message': 'Signup successful'})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'GET':
         form = CustomUserForm()
-    return render(request, 'protraveller_app/signup.html', {'form': form})
+        return render(request, 'protraveller_app/signup.html', {'form': form})
+
+    return Response({'message': 'Invalid request'}, status=status.HTTP_400_BAD_REQUEST)
 @csrf_exempt
 
+@api_view(['POST'])
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.data.get('username')  # Use request.data instead of request.POST
+        password = request.data.get('password')
+        
         user = authenticate(request, username=username, password=password)
+        
         if user is not None:
             login(request, user)
-            return redirect('index')
-    return render(request, 'protraveller_app/login.html')
+            return Response({'message': 'Login successful'})
+        else:
+            return Response({'message': 'Invalid credentials'}, status=401)
+
+    return Response({'message': 'Invalid request'}, status=400)
 @csrf_exempt
 
 def logout_view(request):

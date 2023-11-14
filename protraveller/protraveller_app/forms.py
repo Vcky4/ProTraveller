@@ -14,4 +14,4 @@ class ArticleForm(forms.ModelForm):
 class CustomUserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = []
+        fields = ['username', 'password']

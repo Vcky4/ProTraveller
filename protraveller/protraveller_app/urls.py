@@ -3,7 +3,7 @@ from django.urls import path
 
 urlpatterns = [
     path( '', views.index, name='index'),
-    path('signup/', views.signup, name='signup'),
+    path('signup/', views.signup_view, name='signup'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('profile/', views.profile, name='profile'),
@@ -12,7 +12,7 @@ urlpatterns = [
 
     
     # REST-API Views
-    path('api/signup/', views.signup, name='signup-api'),
+    path('api/signup/', views.signup_view, name='signup-api'),
     path('api/login/', views.login_view, name='login-api'),
     path('api/logout/', views.logout, name='logout-api'),
     path('api/profile/', views.profile, name='profile-api'),
