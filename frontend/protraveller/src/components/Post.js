@@ -17,6 +17,14 @@ const Post = ({ post }) => {
 
   return (
     <div className="bg-white rounded-md shadow-md p-4">
+      <div className='flex items-center'>
+        <img
+          src={`https://source.unsplash.com/50x50/?profile`}
+          alt="Profile"
+          className="rounded-full h-10 w-10 object-cover"
+        />
+        <h3 className="text-lg font-semibold ml-2">{post?.username}</h3>
+      </div>
       <h3 className="text-lg font-semibold mb-2">{post.location}</h3>
       <img
         src={post?.image || `https://source.unsplash.com/500x300/?${post.location}`}
@@ -31,7 +39,7 @@ const Post = ({ post }) => {
             <FontAwesomeIcon
               key={star}
               icon={faStar}
-              className={`text-${star <= post.cleanliness ? 'yellow' : 'gray'}-500`}
+              className={`text-${star <= post.cleanliness ? 'red' : 'gray'}-500`}
             />
           ))}
         </div>
@@ -41,7 +49,7 @@ const Post = ({ post }) => {
             <FontAwesomeIcon
               key={star}
               icon={faStar}
-              className={`text-${star <= post.affordability ? 'yellow' : 'gray'}-500`}
+              className={`text-${star <= post.affordability ? 'red' : 'gray'}-500`}
             />
           ))}
         </div>
@@ -51,7 +59,7 @@ const Post = ({ post }) => {
             <FontAwesomeIcon
               key={star}
               icon={faStar}
-              className={`text-${star <= post.service ? 'yellow' : 'gray'}-500`}
+              className={`text-${star <= post.service ? 'red' : 'gray'}-500`}
             />
           ))}
         </div>
