@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import home from '../images/home.jpg'
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png'
+import { useAppContext } from '../context/Context.js';
+
 
 
 
@@ -9,6 +11,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // const { state, dispatch } = useAppContext();
 
     const handleLogin = () => {
         // Handle the login logic here, e.g., sending a request to your server
@@ -17,6 +20,7 @@ const LoginPage = () => {
         // For this example, we'll just log the email and password
         console.log('Email:', email);
         console.log('Password:', password);
+        // dispatch({ type: 'SET_USER', payload: user });
     };
 
     return (

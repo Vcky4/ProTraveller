@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import flight2 from '../images/flight2.jpg';
 import logo from '../images/logo.png'
 import { toast } from 'react-toastify';
+import { getCookie } from '../utill';
 
 const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -11,10 +12,15 @@ const SignUp = () => {
         password: '',
     })
 
+    useEffect(() => {
+        const csrftoken = getCookie('csrftoken');
+        console.log('CSRF Token:', csrftoken);
+      }, []);
+
     //sign up
     const handleSignUp = () => {
         // Handle sign-up logic
-        if(signUpData.password !== confirmPassword) {
+        if (signUpData.password !== confirmPassword) {
             alert('Passwords do not match');
             // toast.error('Passwords do not match', {
             //     position: 'top-right',
@@ -35,7 +41,11 @@ const SignUp = () => {
         })
             .then(response => response.json())
             .then(data => {
-                alert(data.detail)
+                if (data.message == undefined) {
+                    alert(data.username || data.password)
+                } else {
+                    alert(data.message)
+                }
                 console.log(data)
             })
             .catch(err => console.log(err))
