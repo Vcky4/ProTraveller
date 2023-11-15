@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import flight2 from '../images/flight2.jpg';
 import logo from '../images/logo.png'
 import { toast } from 'react-toastify';
 import { getCookie } from '../utill';
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const [confirmPassword, setConfirmPassword] = useState('');
     const [signUpData, setSignUpData] = useState({
         username: '',
@@ -15,7 +16,7 @@ const SignUp = () => {
     useEffect(() => {
         const csrftoken = getCookie('csrftoken');
         console.log('CSRF Token:', csrftoken);
-      }, []);
+    }, []);
 
     //sign up
     const handleSignUp = () => {
@@ -45,6 +46,7 @@ const SignUp = () => {
                     alert(data.username || data.password)
                 } else {
                     alert(data.message)
+                    navigate('/home');
                 }
                 console.log(data)
             })

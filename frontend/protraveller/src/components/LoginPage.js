@@ -9,18 +9,44 @@ import { useAppContext } from '../context/Context.js';
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const { state, dispatch } = useAppContext();
+    const { state, dispatch } = useAppContext();
 
     const handleLogin = () => {
         // Handle the login logic here, e.g., sending a request to your server
-        navigate('/home'); // Navigate to the home page
+        // Navigate to the home page
 
         // For this example, we'll just log the email and password
-        console.log('Email:', email);
+        console.log('Username:', username);
         console.log('Password:', password);
-        // dispatch({ type: 'SET_USER', payload: user });
+        
+        
+        fetch('http://127.0.0.1:8000/api/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        })
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    navigate('/home');
+                    dispatch({ type: 'IS_LOGIN', payload: true });
+                }
+                console.log(response)
+                if (data.message == undefined) {
+                    alert(data.username || data.password)
+                } else {
+                    alert(data.message)
+                }
+                console.log(data)
+            })
+            .catch(err => console.log(err))
     };
 
     return (
@@ -46,12 +72,12 @@ const LoginPage = () => {
                         Email
                     </label>
                     <input
-                        type="email"
-                        id="email"
+                        type="username"
+                        id="username"
                         className="w-full choc-brown p-2 border rounded"
-                        placeholder="Your Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Your User Name"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
                 <div className="mb-4">
