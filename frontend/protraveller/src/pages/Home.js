@@ -3,10 +3,20 @@ import Post from '../components/Post';
 import FilterBar from '../components/FilterBar';
 import { Header } from '../components/Header';
 import { Link } from 'react-router-dom';
+import { Modal } from '../utill';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [newPost, setNewPost] = useState({
+    location: '',
+    content: '',
+    cleanliness: 1,
+    affordability: 1,
+    service: 1,
+    username: 'Samuel Thompson',
+    reactions: 0,
+  });
 
   const openModal = () => {
     setModalOpen(true);
@@ -55,7 +65,7 @@ const Home = () => {
           className="absolute inset-0 bg-black opacity-50"
           style={{ mixBlendMode: 'multiply' }}
         /> */}
-        <div className="container mx-auto p-4 z-20">
+        <div className="container mx-auto p-4">
           <Header />
           <h1 className="text-3xl font-bold mb-4">Explore The Beauty</h1>
           <div className='flex text-sm items-center'>
@@ -71,32 +81,92 @@ const Home = () => {
             ))}
           </div>
         </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <h2>This is a Modal</h2>
-        <p>Modal content goes here.</p>
-      </Modal>
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <h2 className='font-semibold'>Tell Your Experience</h2>
+          <input
+            className="border p-2 rounded-md w-full mt-4"
+            type="text"
+            placeholder="Location"
+            value={newPost.location}
+            onChange={(e) => setNewPost({ ...newPost, location: e.target.value })}
+          />
+          <textarea
+            className="border p-2 rounded-md w-full mt-4"
+            type="text"
+            placeholder="Content"
+            value={newPost.content}
+            onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+          />
+          <select
+            className="border p-2 rounded-md w-full mt-4"
+            placeholder="Cleanliness"
+            value={newPost.cleanliness}
+            onChange={(e) => setNewPost({ ...newPost, cleanliness: e.target.value })}
+          >
+            <option value="1">Cleanliness</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <select
+            className="border p-2 rounded-md w-full mt-4"
+            placeholder="Affordability"
+            value={newPost.affordability}
+            onChange={(e) => setNewPost({ ...newPost, affordability: e.target.value })}
+          >
+            <option value="1">Affordability</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <select
+            className="border p-2 rounded-md w-full mt-4"
+            placeholder="Service"
+            value={newPost.service}
+            onChange={(e) => setNewPost({ ...newPost, service: e.target.value })}
+          >
+            <option value="1">Service</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button
+            className="button-background text-white px-3 py-2 rounded-md mt-4"
+            onClick={() => {
+              setPosts([{
+                ...newPost,
+                id: posts.length + 1,
+                reactions: 0,
+                username: 'William Thompson',
+                createdAt: new Date().toISOString()
+              }, ...posts]);
+              setNewPost({
+                location: '',
+                content: '',
+                cleanliness: 1,
+                affordability: 1,
+                service: 1,
+                username: 'Samuel Thompson',
+                reactions: 0,
+              });
+              closeModal();
+            }}
+          >
+            Create
+          </button>
+          <button
+            className="bg-blue-500 text-white px-3 py-2 rounded-md mt-4 ml-4"
+            onClick={closeModal}
+          >
+            Cancel
+          </button>
+        </Modal>
       </div>
     </>
   );
 };
 
 export default Home;
-
-const Modal = ({ isOpen, onClose, children }) => {
-  if (!isOpen) {
-    return null;
-  }
-
-  return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <div className="modal-header">
-          <span className="close-button" onClick={onClose}>
-            &times;
-          </span>
-        </div>
-        <div className="modal-content">{children}</div>
-      </div>
-    </div>
-  );
-};
