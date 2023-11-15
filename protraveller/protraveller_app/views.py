@@ -33,9 +33,10 @@ def signup_view(request):
         return render(request, 'protraveller_app/signup.html', {'form': form})
 
     return Response({'message': 'Invalid request'}, status=status.HTTP_400_BAD_REQUEST)
-@csrf_exempt
 
 @api_view(['POST'])
+@csrf_exempt
+
 def login_view(request):
     if request.method == 'POST':
         username = request.data.get('username')  # Use request.data instead of request.POST

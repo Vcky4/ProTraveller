@@ -1,20 +1,23 @@
-# Ignore the virtual environment directory
-pro_traveller_env/
-
-# Ignore database files
-db.sqlite3
-
-# Ignore system files
+# Python
 __pycache__/
-
-# Ignore settings files
 *.pyc
 *.pyo
 *.pyd
+*.pyo
+*.pyc
 
-# Ignore local development settings
-local_settings.py
+# Django
+db.sqlite3
+/media/
+/static/
 
-# Ignore IDE-specific files and directories
+# IDE and editor files
 .vscode/
 .idea/
+*.iml
+*.pyc
+
+# Virtual environments
+venv/
+env/
+pro_traveller_env/
