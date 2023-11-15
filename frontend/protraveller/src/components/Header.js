@@ -12,7 +12,7 @@ export const Header = () => {
         setIsOpen(!isOpen);
     };
 
-    const isHome = location.pathname === '/home';
+const isHome = location.pathname === '/home' || location.pathname === '/profile';
 
     return (
         <section className='flex flex-col xl:flex-row items-start xl:items-center justify-between px-8 md:px-16 py-5 backdrop-blur navbar flex-wrap sticky top-0 z-30 max-w-screen-2xl mx-auto'>
@@ -33,11 +33,13 @@ export const Header = () => {
                             </button>
                         </div>
                         <div>
+                        <Link to="/profile" smooth>
                             <img
                                 src={`https://source.unsplash.com/50x50/?profile`}
                                 alt="Profile"
                                 className="rounded-full h-10 w-10 object-cover"
                             />
+                        </Link>
                         </div>
                     </div>
                 ) : (
