@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Post from '../components/Post';
 import FilterBar from '../components/FilterBar';
 import { Header } from '../components/Header';
-
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   const [locationFilter, setLocationFilter] = useState('All');
 
   const filteredPosts = posts.filter((post) => locationFilter === 'All' || post.location === locationFilter);
@@ -50,16 +58,45 @@ const Home = () => {
         <div className="container mx-auto p-4 z-20">
           <Header />
           <h1 className="text-3xl font-bold mb-4">Explore The Beauty</h1>
-          <FilterBar locationFilter={locationFilter} setLocationFilter={setLocationFilter} />
+          <div className='flex text-sm items-center'>
+            <FilterBar locationFilter={locationFilter} setLocationFilter={setLocationFilter} />
+            {/* Your create button */}
+            <button onClick={openModal} className='button-background ml-8 mb-4 text-white px-10 py-1 rounded'>
+              Create
+            </button>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredPosts.map((post) => (
               <Post key={post.id} post={post} />
             ))}
           </div>
         </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <h2>This is a Modal</h2>
+        <p>Modal content goes here.</p>
+      </Modal>
       </div>
     </>
   );
 };
 
 export default Home;
+
+const Modal = ({ isOpen, onClose, children }) => {
+  if (!isOpen) {
+    return null;
+  }
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal">
+        <div className="modal-header">
+          <span className="close-button" onClick={onClose}>
+            &times;
+          </span>
+        </div>
+        <div className="modal-content">{children}</div>
+      </div>
+    </div>
+  );
+};

@@ -26,12 +26,7 @@ const isHome = location.pathname === '/home' || location.pathname === '/profile'
             <nav>
                 {isHome ? (
                     <div className='hidden xl:flex items-center justify-center gap-8 font-semibold'>
-                        <div className='flex items-center justify-center gap-4 text-sm'>
-                            {/* Your create button */}
-                            <button className='button-background text-white px-10 py-1 rounded'>
-                                <Link to="/create" smooth>Create</Link>
-                            </button>
-                        </div>
+                     
                         <div>
                         <Link to="/profile" smooth>
                             <img
