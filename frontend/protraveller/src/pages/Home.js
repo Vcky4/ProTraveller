@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Post from '../components/Post';
 import FilterBar from '../components/FilterBar';
 import { Header } from '../components/Header';
-import { Link } from 'react-router-dom';
 import { Modal } from '../utill';
 
 const Home = () => {
