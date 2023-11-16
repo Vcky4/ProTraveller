@@ -1,6 +1,14 @@
 # ProTraveller
 
-ProTraveller is a platform designed to enhance the travel experience and facilitate the sharing of travel stories. It aims to make traveling more enjoyable and provide a space for users to share their unique experiences.
+## Introduction
+
+ProTraveller is a web platform designed to enhance travel experiences and foster a community of avid travelers sharing their stories. This repository houses both the frontend and backend codebases.
+
+- **Deployed Site:** [ProTraveller]((https://654e092e96c0d76640ff43e7--boisterous-jalebi-c60d89.netlify.app/))
+- **Final Project Blog Article:** [Read Blog]()
+- **Authors:**
+  - [Mitchell Watera](https://www.linkedin.com/in/mitchell-maina-b5b834170)
+  - [Victor Ubong Okon](https://www.linkedin.com/in/vicksoson)
 
 ## Features
 
@@ -36,4 +44,11 @@ To run the project locally, follow these steps:
    - Frontend: `cd  frontend/protraveller && npm start`
    - Backend: `cd protraveller && python manage.py runserver`
 
+## Related Projects
 
+ - [tripadvisor](https://www.tripadvisor.com/)
+ - [worldtrips](https://www.worldtrips.com/)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
