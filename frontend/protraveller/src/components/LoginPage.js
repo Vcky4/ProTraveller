@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import home from '../images/home.jpg'
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png'
-import { useAppContext } from '../context/Context.js';
 
 
 
@@ -11,7 +10,6 @@ const LoginPage = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { state, dispatch } = useAppContext();
 
     const handleLogin = () => {
         // Handle the login logic here, e.g., sending a request to your server
@@ -36,10 +34,9 @@ const LoginPage = () => {
                 const data = await response.json()
                 if (response.ok) {
                     navigate('/home');
-                    dispatch({ type: 'IS_LOGIN', payload: true });
                 }
                 console.log(response)
-                if (data.message == undefined) {
+                if (data.message === undefined) {
                     alert(data.username || data.password)
                 } else {
                     alert(data.message)

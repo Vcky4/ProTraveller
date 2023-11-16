@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import flight2 from '../images/flight2.jpg';
 import logo from '../images/logo.png'
-import { toast } from 'react-toastify';
-import { getCookie } from '../utill';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -13,10 +11,6 @@ const SignUp = () => {
         password: '',
     })
 
-    useEffect(() => {
-        const csrftoken = getCookie('csrftoken');
-        console.log('CSRF Token:', csrftoken);
-    }, []);
 
     //sign up
     const handleSignUp = () => {
@@ -42,7 +36,7 @@ const SignUp = () => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.message == undefined) {
+                if (data.message === undefined) {
                     alert(data.username || data.password)
                 } else {
                     alert(data.message)
