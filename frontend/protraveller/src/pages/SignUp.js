@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import flight2 from '../images/flight2.jpg';
 import logo from '../images/logo.png'
-import { toast } from 'react-toastify';
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const [confirmPassword, setConfirmPassword] = useState('');
     const [signUpData, setSignUpData] = useState({
         username: '',
         password: '',
     })
 
+
     //sign up
     const handleSignUp = () => {
         // Handle sign-up logic
-        if(signUpData.password !== confirmPassword) {
+        if (signUpData.password !== confirmPassword) {
             alert('Passwords do not match');
             // toast.error('Passwords do not match', {
             //     position: 'top-right',
@@ -35,7 +36,12 @@ const SignUp = () => {
         })
             .then(response => response.json())
             .then(data => {
-                alert(data.detail)
+                if (data.message === undefined) {
+                    alert(data.username || data.password)
+                } else {
+                    alert(data.message)
+                    navigate('/home');
+                }
                 console.log(data)
             })
             .catch(err => console.log(err))

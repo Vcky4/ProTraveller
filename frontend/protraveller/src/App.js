@@ -17,7 +17,6 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path='/home' element={<Home />} />
           <Route path='/profile' element={<Profile />} />
-
           {/* <Route path='/terms-and-conditions' element={<TermsAndConditions />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/about' element={<About />} />

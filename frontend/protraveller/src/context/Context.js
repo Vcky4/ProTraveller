@@ -11,6 +11,7 @@ const initialState = {
 const actions = {
   INCREMENT: 'INCREMENT',
   SET_USER: 'SET_USER',
+  IS_LOGIN: 'IS_LOGIN'
 };
 
 // Reducer function
@@ -20,6 +21,8 @@ const reducer = (state, action) => {
       return { ...state, counter: state.counter + 1 };
     case actions.SET_USER:
       return { ...state, user: action.payload };
+    case actions.IS_LOGIN:
+      return { ...state, isLogin: action.payload };
     default:
       return state;
   }
