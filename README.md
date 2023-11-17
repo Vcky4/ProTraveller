@@ -7,7 +7,7 @@ ProTraveller is a web platform designed to enhance travel experiences and foster
 - **Deployed Site:** [ProTraveller]((https://654e092e96c0d76640ff43e7--boisterous-jalebi-c60d89.netlify.app/))
 - **Final Project Blog Article:** [Read Blog]()
 - **Authors:**
-  - [Mitchell Watera](https://www.linkedin.com/in/mitchell-maina-b5b834170)
+  - [Mitchell Wachera](https://www.linkedin.com/in/mitchell-maina-b5b834170)
   - [Victor Ubong Okon](https://www.linkedin.com/in/vicksoson)
 
 ## Features
