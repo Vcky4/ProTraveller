@@ -29,7 +29,7 @@ export const About = () => {
                         <strong>Inspiration Strikes:</strong> The idea took shape as we recognized the need for a dedicated platform for travel aficionados.
                         <br />
                         <p className="mt-2">
-                            <strong>Design and Development:</strong> <a className="choc-brown" href="https://github.com/mitchellshera">Mitchell Watera</a>,
+                            <strong>Design and Development:</strong> <a className="choc-brown" href="https://github.com/mitchellshera">Mitchell Wachera</a>,
                             our backend maestro, skillfully crafted the foundations with Django, while
                             <a className="choc-brown" href="https://github.com/vcky4"> Victor Ubong Okon</a>, the creative force behind the frontend,
                             brought the project to life using React JS. Iterative Refinement: We continuously refined Protraveller to ensure an
@@ -43,7 +43,7 @@ export const About = () => {
                     </p>
                     <h1 className='font-semibold text-2xl 2xl:text-4xl playfair text-start mt-8'>-Meet the Developers-</h1>
                     <p className="text-justify text-lg playfair">
-                        <strong>Mitchell Watera</strong> Backend Developer
+                        <strong>Mitchell Wachera</strong> Backend Developer
                         <ul className="list-disc ml-8">
                             <li><a className="choc-brown" href="https://www.linkedin.com/in/mitchell-maina-b5b834170/">LinkedIn</a></li>
                             <li><a className="choc-brown" href="https://github.com/mitchellshera">GitHub</a></li>
